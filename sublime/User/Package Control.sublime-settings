@@ -1,0 +1,20 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"All Autocomplete",
+		"BracketHighlighter",
+		"DocBlockr",
+		"Elixir",
+		"Emmet",
+		"Inc-Dec-Value",
+		"Package Control",
+		"Random Everything",
+		"SideBarEnhancements",
+		"Tmux",
+		"VimL"
+	]
+}

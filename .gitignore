@@ -1,0 +1,20 @@
+.DS_Store
+
+sublime/Package Control.last-run
+sublime/Package Control.ca-list
+sublime/Package Control.ca-bundle
+sublime/Package Control.system-ca-bundle
+sublime/Package Control.cache/
+sublime/Package Control.ca-certs/
+
+sublime/User/Side Bar Folders/Main.sublime-menu
+sublime/User/Package Control.last-run
+sublime/User/Package Control.last-ru
+sublime/User/Package Control.cache/01524fae79697630d0454ba3fabd9414
+sublime/User/Package Control.cache/*.info
+sublime/User/Package Control.last-run
+
+sublime/User/Side Bar Folders.sublime-settings
+sublime/User/Side Bar Folders/Main.sublime-menu
+sublime/User/Package Control.merged-ca-bundle
+sublime/User/oscrypto-ca-bundle.crt

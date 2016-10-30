@@ -293,9 +293,9 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>943 538 700 622 0 0 2560 1417 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>872 390 796 473 0 0 2560 1417 </string>
+	<string>872 312 918 512 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1055 587 730 652 0 0 2560 1417 </string>
+	<string>1055 566 730 652 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>1253 739 730 652 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -945,6 +945,10 @@
 	</array>
 	<key>NoSyncInstallationId</key>
 	<string>C2D22569-4D22-43E1-9665-19512C8B756B</string>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
 	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>

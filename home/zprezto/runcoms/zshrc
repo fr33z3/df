@@ -5,16 +5,16 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
-START=$(gdate +%s%N);
+# START=$(gdate +%s%N);
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-END=$(gdate +%s%N);
+# END=$(gdate +%s%N);
 
-echo $((END-START)) | awk '{print " \t -> Loaded in " $1/1000000000 "s"}'
+# echo $((END-START)) | awk '{print " \t -> Loaded in " $1/1000000000 "s"}'
 
 # Customize to your needs...
 

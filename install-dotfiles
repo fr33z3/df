@@ -1,57 +1,49 @@
 #!/usr/bin/env zsh
 
-dotfiles="$(pwd)"
+pushd home
+  for i in .*; do
+    [ -e $i ] || continue # for safaty
+    if [ -e $HOME/$i ]; then
+      mkdir -pv ../bak && mv -v $HOME/$i ../bak/$i
+    fi
+    ln -sfv $PWD/$i $HOME/$i
+  done
+popd home
 
-if [[ -d "$dotfiles" ]]; then
-  echo "Symlinking dotfiles from $dotfiles"
-else
-  echo "$dotfiles does not exist"
-  exit 1
-fi
+pushd ..
+  if [ $(uname -s) = 'Darwin' ]; then
 
-link() {
-  from="$1"
-  to="$2"
-  echo "Linking '$from' to '$to'"
-  rm -f "$to"
-  ln -s "$from" "$to"
-}
+    sublimeuser="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
+    if [ -d $sublimeuser  ]; then
+      echo "Sublime user dir exists backing up..."
+      mkdir -pv bak && mv $sublimeuser bak/original-sublime-user
+    fi
 
-for location in $(find home -name '.*'); do
-  file="${location##*/}"
-  file="${file%.sh}"
-  link "$dotfiles/$location" "$HOME/$file"
-done
+    echo "Linking Sublime dir..."
+    ln -sv $PWD/sublime/User $sublimeuser
 
-if [[ `uname` == 'Darwin' ]]; then
-  user="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
-  if [ -d "$user"  ]; then
-    echo "sublime user dir exists backing up..."
-    mkdir -pv bak && mv "$user" bak/original-sublime-user
+    [ ! -e /usr/local/bin/subl ] && ln -svf "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin
   fi
-  ln -sv $(pwd)/sublime/User "$user"
-  ln -svf "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin
-fi
 
-# TODO: git pull && git submodule update --init --recursive
-setopt EXTENDED_GLOB
-for rcfile in "$dotfiles"/home/zprezto/runcoms/^README.md(.N); do
-  ln -svf "$rcfile" "$HOME/.${rcfile:t}"
-done
-ln -svf "$dotfiles"/home/zprezto "$HOME"/.zprezto 
+  # link zprezto
+  for rcfile in $PWD/home/zprezto/runcoms/^README.md(.N); do
+    ln -svf $rcfile $HOME/.${rcfile:t}
+  done
+  ln -svf $PWD/home/zprezto $HOME/.zprezto
 
-# Install vim
-export GIT_SSL_NO_VERIFY=true
-mkdir -p ~/.vim/autoload
-curl --insecure -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim
+  # vim
+  export GIT_SSL_NO_VERIFY=true
+  mkdir -p ~/.vim/autoload
+  curl --insecure -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim
 
-# vimrc
-mv -v ~/.vimrc $(pwd)/bak/.vimrc.old 2> /dev/null
-ln -sf $(pwd)/home/.vimrc ~/.vimrc
+  # vimrc
+  mv -v ~/.vimrc $PWD/bak/.vimrc.old 2> /dev/null
+  ln -sf $PWD/home/.vimrc ~/.vimrc
 
-# nvim
-mkdir -p ~/.config/nvim/autoload
-ln -sf $(pwd)/home/.vimrc ~/.config/nvim/init.vim
-ln -sf ~/.vim/autoload/plug.vim ~/.config/nvim/autoload/
+  # nvim
+  mkdir -p ~/.config/nvim/autoload
+  ln -sf $PWD/home/.vimrc ~/.config/nvim/init.vim
+  ln -sf ~/.vim/autoload/plug.vim ~/.config/nvim/autoload/
 
-vim +PlugInstall +qall
+  vim +PlugInstall +qall
+popd ..

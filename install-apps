@@ -1,19 +1,46 @@
 #!/usr/bin/env zsh
 
-if [[ `uname` == 'Darwin' ]]; then
-  if [[ $(which -s brew) != 0 ]]; then
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew update
-    brew install tmux \
-    z vim trash \
-    m-cli tig htop vim bash zsh \
-    elixir rbenv \
-    git git-extras mas fzf fortune coreutils\
-    ssh-copy-id
+# If MacOS
+if [ $(uname -s) = 'Darwin' ]; then
 
-    brew tap caskroom/cask
-    brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql qlimagesize webpquicklook suspicious-package
-    brew cask install spectacle \
+    # Homebrew, -z string True if the length of string is zero.
+    [ -z "$(which brew)" ] &&
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+    echo "Updating homebrew"
+    brew update
+
+    echo "Installing brew things..."
+    ruby -e '
+      d = %w(
+        tmux ag z wget vim trash m-cli tig htop vim bash zsh elixir rbenv highlight
+        git git-extras mas tree fzf fortune coreutils ssh-copy-id
+      ) - %x(brew list).split(" ")
+      print d.join(" ")
+    ' | xargs brew install
+
+
+    if brew tap-info caskroom/cask | grep -q "Not installed"; then
+      echo "Installing brew cask..."
+      brew tap caskroom/cask
+    fi
+
+
+    if brew tap-info caskroom/fonts | grep -q "Not installed"; then
+      echo "Installing brew fonts..."
+      brew tap caskroom/fonts
+    fi
+
+    echo "Installing brew cask things..."
+    brew cask install qlcolorcode qlstephen qlmarkdown \
+      quicklook-json qlprettypatch quicklook-csv \
+      betterzipql qlimagesize webpquicklook suspicious-package
+
+    echo "Installing brew cask apps..."
+    brew cask install spectacle
+
+    echo "Installing brew cask fonts..."
+    brew cask install \
     font-dejavu-sans \
     font-inconsolata \
     font-meslo-lg \
@@ -23,5 +50,4 @@ if [[ `uname` == 'Darwin' ]]; then
     font-meslo-lg-for-powerline \
     font-hermit \
     font-input
-  fi
 fi

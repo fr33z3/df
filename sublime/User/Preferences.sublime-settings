@@ -1,6 +1,7 @@
 {
 	"bold_folder_labels": true,
 	"caret_style": "phase",
+	"theme": "Spacegray Light.sublime-theme",
 	"color_scheme": "Packages/Color Scheme - Default/LAZY.tmTheme",
 	"draw_indent_guides": true,
 	"ensure_newline_at_eof_on_save": true,
@@ -17,13 +18,16 @@
 		"tmp",
 		"node_modules"
 	],
-	"font_face": "Operator Mono",
+	// "font_face": "Operator Mono",
+	"font_face": "Source Code Pro",
 	"font_options":
 	[
 		"subpixel_antialias",
+		"no_round",
 		"gray_antialias2"
 	],
-	"font_size": 15,
+	// "font_size": 15,
+	"font_size": 13,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":

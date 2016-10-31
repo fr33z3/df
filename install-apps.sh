@@ -8,8 +8,8 @@ if [[ `uname` == 'Darwin' ]]; then
       brew install tmux \
       z vim trash \
       m-cli tig htop vim bash zsh \
-      elixir rbenv iterm2 \
-      git git-extras mas fzf \
+      elixir rbenv \
+      git git-extras mas fzf fortune coreutils\
       ssh-copy-id
   fi
 

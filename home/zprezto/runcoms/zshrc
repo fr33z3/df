@@ -210,10 +210,6 @@ git_pull_recursive () {
 
 # OSX only functions
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  alias tac='tail -r'
-  o() {
-    open --reveal "${1:-.}"
-  }
   # c - browse chrome history
   c() {
     local cols sep

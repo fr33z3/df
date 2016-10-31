@@ -70,7 +70,7 @@
 	keepBackup = false
 
 [ghi]
-	token = !security find-internet-password -a yungb -s github.com -l 'ghi token' -w
+	token = !security find-internet-password -a bugaiov -s github.com -l 'ghi token' -w
 
 [pull]
 	rebase = true

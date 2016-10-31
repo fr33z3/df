@@ -1,20 +1,17 @@
-if [[ `uname` == 'Darwin' ]]; then
+#!/usr/bin/env zsh
 
+if [[ `uname` == 'Darwin' ]]; then
   which -s brew
   if [[ $? != 0 ]]; then
-    echo 'Installing Homebrew...'
-      ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-      brew update
-      brew install tmux \
-      z vim trash \
-      m-cli tig htop vim bash zsh \
-      elixir rbenv \
-      git git-extras mas fzf fortune coreutils\
-      ssh-copy-id
-  fi
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew update
+    brew install tmux \
+    z vim trash \
+    m-cli tig htop vim bash zsh \
+    elixir rbenv \
+    git git-extras mas fzf fortune coreutils\
+    ssh-copy-id
 
-  # http://github.com/sindresorhus/quick-look-plugins
-  echo 'Installing Quick Look plugins...'
     brew tap caskroom/cask
     brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql qlimagesize webpquicklook suspicious-package
     brew cask install spectacle \
@@ -27,5 +24,5 @@ if [[ `uname` == 'Darwin' ]]; then
     font-meslo-lg-for-powerline \
     font-hermit \
     font-input
-
+  fi
 fi

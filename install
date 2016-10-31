@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+echo "Installing dotfile..."
+./install-dotfiles
+
+echo "Installing apps..."
+./install-apps

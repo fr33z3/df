@@ -1,6 +1,4 @@
 # Install
 
-    dotfile=~/Developer/yungb/dotfiles
-    git clone git@github.com:bugaiov/df.git $dotfile
-    cd $dotfile
-    sh install.sh
+    chsh -s /bin/zsh
+    git clone https://github.com/bugaiov/df.git ~/.dotfiles && cd ~/.dotvim && ./install

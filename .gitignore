@@ -18,3 +18,6 @@ sublime/User/Side Bar Folders.sublime-settings
 sublime/User/Side Bar Folders/Main.sublime-menu
 sublime/User/Package Control.merged-ca-bundle
 sublime/User/oscrypto-ca-bundle.crt
+
+# Local backup
+/bak

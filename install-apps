@@ -1,8 +1,7 @@
 #!/usr/bin/env zsh
 
 if [[ `uname` == 'Darwin' ]]; then
-  which -s brew
-  if [[ $? != 0 ]]; then
+  if [[ $(which -s brew) != 0 ]]; then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew update
     brew install tmux \

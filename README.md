@@ -1,4 +1,4 @@
 # Install
 
     chsh -s /bin/zsh
-    git clone https://github.com/bugaiov/df.git ~/.dotfiles && cd ~/.dotfiles && ./install
+    git clone git@github.com:bugaiov/df.git ~/.dotfiles && cd ~/.dotfiles && ./install

@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-dotfiles="~/.dotfiles"
+dotfiles="$(pwd)"
 
 if [[ -d "$dotfiles" ]]; then
   echo "Symlinking dotfiles from $dotfiles"
@@ -38,7 +38,7 @@ setopt EXTENDED_GLOB
 for rcfile in "$dotfiles"/home/zprezto/runcoms/^README.md(.N); do
   ln -svf "$rcfile" "$HOME/.${rcfile:t}"
 done
-lm -svf $HOME"/.zprezto $dotfiles"/home/zprezto
+ln -svf "$dotfiles"/home/zprezto "$HOME"/.zprezto 
 
 # Install vim
 export GIT_SSL_NO_VERIFY=true

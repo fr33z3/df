@@ -10,6 +10,12 @@ pushd home
   done
 popd home
 
+# link zprezto
+for i in $PWD/zprezto/runcoms/z*; do
+  ln -svf $i $HOME/.${i:t}
+done
+ln -svf $PWD/zprezto $HOME/.zprezto
+
 pushd ..
   if [ $(uname -s) = 'Darwin' ]; then
 
@@ -24,12 +30,6 @@ pushd ..
 
     [ ! -e /usr/local/bin/subl ] && ln -svf "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin
   fi
-
-  # link zprezto
-  for rcfile in $PWD/home/zprezto/runcoms/^README.md(.N); do
-    ln -svf $rcfile $HOME/.${rcfile:t}
-  done
-  ln -svf $PWD/home/zprezto $HOME/.zprezto
 
   # vim
   export GIT_SSL_NO_VERIFY=true

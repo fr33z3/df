@@ -178,3 +178,5 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     sed 's#.*\(https*://\)#\1#' | xargs open
   }
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
